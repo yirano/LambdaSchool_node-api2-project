@@ -5,7 +5,7 @@ const List = (props) => {
   const { posts } = props
   return (
     <div>
-      {posts.map(post => <Card post={post} />)}
+      {posts.map(post => <Card id={post.id} post={post} handleDelete={props.handleDelete} />)}
     </div>
   )
 }
