@@ -51,7 +51,7 @@ function findCommentById(id) {
   return db('comments')
     .join('posts', 'posts.id', 'post_id')
     .select('comments.*', 'title as post')
-    .where('comments.id', post_id)
+    .where('comments.id', id)
 }
 
 function insertComment(comment, id) {
