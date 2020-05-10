@@ -51,11 +51,13 @@ function findCommentById(id) {
   return db('comments')
     .join('posts', 'posts.id', 'post_id')
     .select('comments.*', 'title as post')
-    .where('comments.id', id);
+    .where('comments.id', post_id)
 }
 
-function insertComment(comment) {
+function insertComment(comment, id) {
+  console.log("insertComment -> comment", comment)
+
   return db('comments')
     .insert(comment)
-    .then(ids => ({ id: ids[0] }));
+    .then(ids => ({ ...comment, post_id: Number(id), id: ids[0] }));
 }
