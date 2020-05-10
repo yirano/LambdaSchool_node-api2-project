@@ -19,7 +19,7 @@ export class App extends Component {
   }
 
   handleSubmit = (e) => {
-    e.preventDefault()
+    // e.preventDefault()
     this.setState({ post: this.state.input, input: { title: '', contents: '' } })
 
   }
@@ -50,16 +50,6 @@ export class App extends Component {
     if (prevState.post !== this.state.post) {
       axios.post('http://localhost:4000/api/posts', this.state.post)
         .then(res => console.log(res))
-        .catch(err => console.log(err))
-
-      axios.get('http://localhost:4000/api/posts')
-        .then(res => {
-          console.log("App -> componentWillMount -> res", res)
-          this.setState({
-            posts: res.data
-          })
-          console.log(this.state.posts);
-        })
         .catch(err => console.log(err))
     }
   }
