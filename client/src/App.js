@@ -19,7 +19,6 @@ export class App extends Component {
   }
 
   handleSubmit = (e) => {
-    // e.preventDefault()
     this.setState({ post: this.state.input, input: { title: '', contents: '' } })
 
   }
@@ -29,7 +28,7 @@ export class App extends Component {
   }
 
   handleDelete = (e) => {
-    console.log(e.target.id)
+    console.log('e.target.id', e.target.id)
     this.setState({ posts: this.state.posts.filter(post => post.id != e.target.id) })
     axios.delete(`http://localhost:4000/api/posts/${e.target.id}`)
   }
@@ -52,10 +51,6 @@ export class App extends Component {
         .then(res => console.log(res))
         .catch(err => console.log(err))
     }
-  }
-
-  componentWillUnmount() {
-
   }
 
   render() {
