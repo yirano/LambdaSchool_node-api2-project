@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 
 const useForm = () => {
@@ -7,12 +8,13 @@ const useForm = () => {
   const [post, setPost] = useState(input)
 
   const handleSubmit = (e) => {
+    // e.preventDefault()
     setPost(input)
   }
 
   const handleChange = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value })
-    console.log(input);
+    console.log(input)
   }
 
   const handleDelete = (e) => {
