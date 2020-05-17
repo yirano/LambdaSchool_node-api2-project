@@ -2,11 +2,12 @@ const express = require('express')
 const Posts = require('./posts-model')
 
 const router = express.Router()
+let posts;
 
 router.post('/', (req, res) => {
   const title = req.body.title
   const contents = req.body.contents
-
+  console.log("Something")
   if (title && contents) {
     Posts.insert(req.body)
       .then(posts => {
@@ -54,6 +55,7 @@ router.get('/', (req, res) => {
   Posts.find(req.query)
     .then(post => {
       res.status(200).json(post)
+      posts = post;
     })
     .catch(err => {
       console.log(err)
